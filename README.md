@@ -53,41 +53,15 @@ flowchart LR
 | Mata kuliah | `courses` | `index`, `create`, `store`, `edit`, `update`, `delete` | `CourseController` | `Course` |
 | Jadwal | `schedules` | `index`, `create`, `store`, `edit`, `update`, `delete` | `CourseScheduleController` | `CourseSchedule` |
 
-## 7. Rancangan Database
+### Aturan penghapusan relasi
 
-```mermaid
-erDiagram
-    DEPARTMENTS ||--o{ LECTURERS : menaungi
-    LECTURERS ||--o{ COURSES : mengajar
-    COURSES ||--o{ COURSE_SCHEDULES : memiliki
+- Menghapus departemen membuat `department_id` dosen terkait menjadi `NULL` (`ON DELETE SET NULL`).
+- Menghapus dosen menghapus mata kuliah yang memiliki dosen tersebut (`ON DELETE CASCADE`).
+- Menghapus mata kuliah menghapus jadwal yang terkait (`ON DELETE CASCADE`).
 
-    DEPARTMENTS {
-        int id PK
-        varchar department_name
-        varchar faculty
-    }
-    LECTURERS {
-        int id PK
-        varchar name
-        varchar nidn UK
-        varchar phone
-        varchar email
-        date join_date
-        int department_id FK
-    }
-    COURSES {
-        int id PK
-        varchar course_code UK
-        varchar course_name
-        int credits
-        int lecturer_id FK
-    }
-    COURSE_SCHEDULES {
-        int id PK
-        int course_id FK
-        enum day
-        time start_time
-        time end_time
-        varchar classroom
-    }
-```
+## Dokumentasi
+
+
+
+https://github.com/user-attachments/assets/814cf251-6c6a-48ce-ab72-98a0779cc224
+
