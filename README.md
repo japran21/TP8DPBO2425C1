@@ -3,14 +3,14 @@
 ## Janji
 Janji: Saya Muhammad Ilal Zhafran dengan NIM 2502623 mengerjakan Tp 8 dalam mata kuliah DPBO untuk keberkahanNya maka saya tidak melakukan kecurangan seperti yang telah dispesifikasikan. Aamiin
 
-## 2. Tujuan Program
+## Tujuan Program
 
 - Menyimpan dan mengelola data akademik.
 - Menyediakan operasi Create, Read, Update, dan Delete (CRUD) untuk setiap modul.
 - Menghubungkan data antarentitas menggunakan foreign key.
 - Menerapkan pemisahan tanggung jawab dengan arsitektur MVC.
 
-## 3. Aktor dan Fitur
+## Aktor dan Fitur
 
 | Aktor | Fitur |
 |---|---|
@@ -19,7 +19,7 @@ Janji: Saya Muhammad Ilal Zhafran dengan NIM 2502623 mengerjakan Tp 8 dalam mata
 | Pengguna aplikasi | Melihat, menambah, mengubah, dan menghapus data mata kuliah |
 | Pengguna aplikasi | Melihat, menambah, mengubah, dan menghapus jadwal mata kuliah |
 
-## 4. Arsitektur Program
+## Arsitektur Program
 
 ```mermaid
 flowchart LR
@@ -33,7 +33,7 @@ flowchart LR
     View --> Template[templates/index.html atau templates/form.html]
     Template --> Browser
 ```
-## 5. Alur Kerja Request
+## Alur Kerja Request
 
 1. Pengguna membuka tautan atau mengirim form dari browser.
 2. Request masuk ke `index.php` dengan parameter `page` dan `action`.
@@ -44,7 +44,7 @@ flowchart LR
 7. View dirender bersama template dan dikirim sebagai HTML kepada browser.
 8. Setelah operasi simpan atau hapus, aplikasi mengarahkan pengguna kembali ke daftar modul.
 
-## 6. Rancangan Modul dan Routing
+## Rancangan Modul dan Routing
 
 | Modul | `page` | Aksi yang ditangani | Controller | Model |
 |---|---|---|---|---|
