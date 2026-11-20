@@ -44,3 +44,50 @@ flowchart LR
 7. View dirender bersama template dan dikirim sebagai HTML kepada browser.
 8. Setelah operasi simpan atau hapus, aplikasi mengarahkan pengguna kembali ke daftar modul.
 
+## 6. Rancangan Modul dan Routing
+
+| Modul | `page` | Aksi yang ditangani | Controller | Model |
+|---|---|---|---|---|
+| Dosen | `lecturers` | `index`, `create`, `store`, `edit`, `update`, `delete` | `LecturerController` | `Lecturer` |
+| Departemen | `departments` | `index`, `create`, `store`, `edit`, `update`, `delete` | `DepartmentController` | `Department` |
+| Mata kuliah | `courses` | `index`, `create`, `store`, `edit`, `update`, `delete` | `CourseController` | `Course` |
+| Jadwal | `schedules` | `index`, `create`, `store`, `edit`, `update`, `delete` | `CourseScheduleController` | `CourseSchedule` |
+
+## 7. Rancangan Database
+
+```mermaid
+erDiagram
+    DEPARTMENTS ||--o{ LECTURERS : menaungi
+    LECTURERS ||--o{ COURSES : mengajar
+    COURSES ||--o{ COURSE_SCHEDULES : memiliki
+
+    DEPARTMENTS {
+        int id PK
+        varchar department_name
+        varchar faculty
+    }
+    LECTURERS {
+        int id PK
+        varchar name
+        varchar nidn UK
+        varchar phone
+        varchar email
+        date join_date
+        int department_id FK
+    }
+    COURSES {
+        int id PK
+        varchar course_code UK
+        varchar course_name
+        int credits
+        int lecturer_id FK
+    }
+    COURSE_SCHEDULES {
+        int id PK
+        int course_id FK
+        enum day
+        time start_time
+        time end_time
+        varchar classroom
+    }
+```
